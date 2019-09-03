@@ -4,8 +4,18 @@ const db =require("../database")
 
 ///////hala
 let getallpark = (cb) => {
-   //////hala
+  db.parkdata.find({},(err,data))
+  if(err){
+    cb(err)
   }
+  else{
+    console.log("data:", data);
+
+cb(data)
+  }
+  
+};
+  
 
 
   // let creatpark = (cb) => {

@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-//import UserTable from './UserTable ';
+//import ParkTable from './ParkTable ';
 //import { browserHistory, Router, Route, IndexRoute } from 'react-router'
 // import { withRouter } from "react-router";
-import { BrowserRouter as Router ,Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+//import UserTable from './UserTable ';
+import { BrowserRouter as Router } from 'react-router-dom';
 //import {Redirect} from 'react-router'
 class LogIn extends Component {
   state = {
     Name: '',
     Password: '',
-    check:"true"
+    check:"true",
+    link:"/loginadmin"
   };
   changeValue = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -17,20 +20,19 @@ class LogIn extends Component {
 
   check = () => {
     if (this.state.Name === this.props.Name && this.state.Password === this.props.Password) {
-      
-      alert('you clicked me');
+     this.setState({link: "/usertable"})
+      // alert('you clicked me');
+   // let path = `/loginadmin`;
+
             
     }
     else {
       console.log("false")
     }
+    // (this.state.Name === this.props.Name && this.state.Password === this.props.Password)?
+    //  <Link to="/usertable"> </Link> :""
   }
-  handleClick(event) {
-    event.preventDefault();
-    
-   
-    
-  }
+
   render() {
     return (
       <React.Fragment>
@@ -52,20 +54,22 @@ class LogIn extends Component {
               onChange={this.changeValue} placeholder=" Enter Password ..." required />
             <small style={{ fontWeight: "bold", color: "red" }}>" Please Enter Your Password "</small>
           </div>
-          <button style={{marginBottom:"6px"}} type="submit" className="btn btn-primary" onClick={this.check}>
-         
+
             
+         <Link to={this.state.link}> 
+          <button style={{marginBottom:"6px"}} type="submit" 
+          className="btn btn-primary" onClick={this.check}>
            LogIn</button> 
-        
+    </Link> 
            </div>
-        <Router >
-          {/* <Route path="/usertable" component={UserTable} /> */}
-          {/* <Route path="/login" component={LogIn} /> */}
-          {/* <Route path="/parktable" component={ParkTable} /> */}
-           <Link to="/usertable"><button type="submit"  style={{marginRight:"3px"}}>User Table
+        <Router>
+          {/* <Route path="/usertable" component={UserTable} />
+          <Route path="/login" component={LogIn} />
+          <Route path="/parktable" component={ParkTable} /> */}
+         {/* <Link to="/usertable" onClick={this.check}><button type="submit"  style={{marginRight:"3px"}}>User Table */}
           
-           </button></Link> 
-           <Link to="/parktable"><button type="submit"  >parktable</button></Link>
+           {/* </button></Link>  */}
+          
         </Router>
     
     

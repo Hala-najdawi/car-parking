@@ -22,7 +22,17 @@ let creatdefult = (cb) => {
 
 /////hala/////
 let getallcostmer = cb => {
-  /////db.userdata
+  db.userdata.find({},(err,data))
+  if(err){
+    cb(err)
+  }
+  else{
+    console.log("data:", data);
+
+cb(data)
+  }
+  
+};
 };
 
 
