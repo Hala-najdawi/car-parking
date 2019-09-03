@@ -4,23 +4,23 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ParkTable from './components/ParkTable';
 import UserTable from './components/UserTable ';
-import LogIn from './components/LogIn'
-
+import LogIn from './components/LogIn';
+import Tables from './components/Tables';
+// import {hashHistory} from 'react-router';
 class App extends Component {
   state = {
-    Name: "Hala",
+    Name: "hala",
     Password: "123456"
   }
 
   render() {
     return (
       <div className="App">
-        <LogIn Name={this.state.Name} Password={this.state.Password} />
-        <Router>
-          <Route path="/usertable" component={UserTable} />
-          {/* <Route path="/login" component={LogIn} /> */}
-          <Route path="/parktable" component={ParkTable} />
-         
+        <Router >
+        <Route path="/loginadmin" component={()=> <LogIn Name={this.state.Name} Password={this.state.Password}/>} /> 
+        <Route path="/usertable" component={UserTable} />
+        <Route path="/parktable" component={ParkTable} />
+        <Route path="/tables" component={Tables}/>
         </Router>
         
       </div>
